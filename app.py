@@ -20,22 +20,32 @@ def close_app():
     os.system('cls')
     print('Fechando a aplicação\n')
 
+
+def invalid_option():
+    print('Opção invalida!\n')
+    input('Digite uma tecla para voltar ao menu principal')
+    main()
+
+
 def choose_option():
+    try:
       chosen_option = int(input(f'Escolha um opção: '))
 
       if chosen_option == 1:
-          print('Cadastrar restaurante')
-
+            print('Cadastrar restaurante')
       elif chosen_option == 2:
-          print('Listar restaurantes')
-
+            print('Listar restaurantes')
       elif chosen_option == 3:
-          print('Ativar restaurante')
-
+            print('Ativar restaurante')
+      elif chosen_option == 4:
+            close_app()
       else:
-          close_app()
+            invalid_option()
+    except:
+      invalid_option()
 
 def main():
+    os.system('cls')
     show_program_name()
     show_options()
     choose_option()
