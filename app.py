@@ -17,7 +17,7 @@ def show_program_name():
 def show_options():
     print('1. Cadastrar restaurante')
     print('2. Listar restaurantes')
-    print('3. Ativar restaurantes')
+    print('3. Alternar estado do restaurante')
     print('4. Sair\n')
 
 def close_app():
@@ -33,7 +33,12 @@ def invalid_option():
 
 def show_subtitles(text):
      os.system('cls')
+     row = '*' * (len(text))
+
+     print(row)
      print(text)
+     print(row)
+
      print('')
 
 def register_new_restaurant():
@@ -49,11 +54,12 @@ def register_new_restaurant():
 def list_restaurants():
      show_subtitles('Listagem de restaurantes')
      
+     print(f'{'Nome do restaurante'.ljust(22)} | {'Categoria'.ljust(20)} | Status')
      for restaurant in restaurants:
             name = restaurant['Nome']
             category = restaurant['Categoria']
-            is_active = restaurant['Ativo']
-            print(f'• {name} | {category} | {is_active}')
+            is_active = 'Ativado' if  restaurant['Ativo'] else 'Desativado'
+            print(f'• {name.ljust(20)} | {category.ljust(20)} | {is_active}')
 
      back_to_main_menu()
 
@@ -70,7 +76,7 @@ def restaurant_state_toggle():
 
               message = f'O restaurante {restaurant_name} foi ativado com sucesso.' if restaurant['Ativo'] else f'O restaurante {restaurant_name} foi desativado com sucesso.'
               print(message)
-              
+
     if not restaurant_found:
          print('O restaurante não foi encontrado.')
 
