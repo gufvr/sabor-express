@@ -1,6 +1,8 @@
 import os
 
-restaurants = ['Fino Osteria', 'Vip Sushi']
+restaurants = [{'Nome':'Praça', 'Categoria':'Fast Food', 'Ativo':False}, 
+               {'Nome':'Fino Osteria', 'Categoria':'Culinária Italiana', 'Ativo':True}, 
+               {'Nome':'Vip Sushi', 'Categoria':'Culinária Japonesa', 'Ativo':False}]
 
 def show_program_name():
       print("""
@@ -46,7 +48,10 @@ def list_restaurants():
      show_subtitles('Listagem de restaurantes')
      
      for restaurant in restaurants:
-            print(f'• {restaurant}')
+            name = restaurant['Nome']
+            category = restaurant['Categoria']
+            is_active = restaurant['Ativo']
+            print(f'• {name} | {category} | {is_active}')
 
      back_to_main_menu()
 
