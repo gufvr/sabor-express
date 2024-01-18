@@ -57,6 +57,24 @@ def list_restaurants():
 
      back_to_main_menu()
 
+def restaurant_state_toggle():
+    show_subtitles('Alternando estado do restaurante')
+
+    restaurant_name = input('Digite o nome do restaurante que deseja alternar o estado: ')
+    restaurant_found = False
+
+    for restaurant in restaurants:
+         if restaurant_name == restaurant['Nome']:
+              restaurant_found = True
+              restaurant['Ativo'] = not restaurant['Ativo']
+
+              message = f'O restaurante {restaurant_name} foi ativado com sucesso.' if restaurant['Ativo'] else f'O restaurante {restaurant_name} foi desativado com sucesso.'
+              print(message)
+              
+    if not restaurant_found:
+         print('O restaurante não foi encontrado.')
+
+    back_to_main_menu()
 
 def choose_option():
     try:
@@ -67,7 +85,7 @@ def choose_option():
       elif chosen_option == 2:
             list_restaurants()
       elif chosen_option == 3:
-            print('Ativar restaurante')
+            restaurant_state_toggle()
       elif chosen_option == 4:
             close_app()
       else:
